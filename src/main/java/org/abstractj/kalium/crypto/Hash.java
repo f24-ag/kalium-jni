@@ -18,10 +18,9 @@ package org.abstractj.kalium.crypto;
 
 import org.abstractj.kalium.encoders.Encoder;
 
-import static org.abstractj.kalium.SodiumConstants.BLAKE2B_OUTBYTES;
+import static org.abstractj.kalium.NaCl.sodium;
 import static org.abstractj.kalium.SodiumConstants.SHA256BYTES;
 import static org.abstractj.kalium.SodiumConstants.SHA512BYTES;
-import static org.abstractj.kalium.NaCl.sodium;
 
 public class Hash {
 
@@ -51,7 +50,7 @@ public class Hash {
     }
 
     public String pwhash_scryptsalsa208sha256(String passwd, Encoder encoder, byte[] salt, int opslimit, long memlimit) {
-        buffer = new byte[KEY_LEN];
+        byte[] buffer = new byte[KEY_LEN];
         sodium().crypto_pwhash_scryptsalsa208sha256(buffer, buffer.length, passwd, passwd.length(), salt, opslimit, memlimit);
         return encoder.encode(buffer);
     }

@@ -13,10 +13,12 @@
 # limitations under the License.
 #
 LOCAL_PATH := $(call my-dir)
+LIBSODIUM_PATH=/home/audrius/dev/nacl/libsodium
+
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := sodium
-LOCAL_SRC_FILES := /installs/libsodium/libsodium-android-$(TARGET_ARCH)/lib/libsodium.a #/installs/libsodium/libsodium-android-(x86|arm|mips)/lib/libsodium.a
+LOCAL_SRC_FILES := $(LIBSODIUM_PATH)/libsodium-android-$(TARGET_ARCH)/lib/libsodium.a
 include $(PREBUILT_STATIC_LIBRARY)
 
 include $(CLEAR_VARS)
@@ -27,7 +29,7 @@ sodium_wrap.c
 
 LOCAL_CFLAGS   += -Wall -g -pedantic -std=c99
 
-LOCAL_C_INCLUDES += /installs/libsodium/libsodium-android-$(TARGET_ARCH)/include /installs/libsodium/libsodium-android-$(TARGET_ARCH)/include/sodium
+LOCAL_C_INCLUDES += $(LIBSODIUM_PATH)/libsodium-android-$(TARGET_ARCH)/include $(LIBSODIUM_PATH)/libsodium-android-$(TARGET_ARCH)/include/sodium
 LOCAL_STATIC_LIBRARIES += android_native_app_glue sodium
 #LOCAL_LDLIBS += -llog -lsodium
 

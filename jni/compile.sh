@@ -18,10 +18,10 @@ rm -f *.so
 swig -java -package org.abstractj.kalium -outdir ../src/main/java/org/abstractj/kalium sodium.i
 
 
-jnilib=libkaliumjni.so
+jnilib=libkalium-jni.so
 destlib=/usr/lib
 if uname -a | grep -q -i darwin; then
-  jnilib=libkaliumjni.jnilib
+  jnilib=libkalium-jni.jnilib
   destlib=/usr/lib/java
   if [ ! -d $destlib ]; then
       sudo mkdir $destlib
