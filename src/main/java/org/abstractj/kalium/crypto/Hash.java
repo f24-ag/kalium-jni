@@ -27,16 +27,15 @@ public class Hash {
 
     private static final int KEY_LEN = 64;
     private static final int SALTBYTES = 32;
-    private static byte[] buffer;
 
     public byte[] sha256(byte[] message) {
-        buffer = new byte[SHA256BYTES];
+        byte[] buffer = new byte[SHA256BYTES];
         sodium().crypto_hash_sha256(buffer, message, message.length);
         return buffer;
     }
 
     public byte[] sha512(byte[] message) {
-        buffer = new byte[SHA512BYTES];
+        byte[] buffer = new byte[SHA512BYTES];
         sodium().crypto_hash_sha512(buffer, message, message.length);
         return buffer;
     }
