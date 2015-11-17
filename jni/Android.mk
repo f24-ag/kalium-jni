@@ -13,7 +13,7 @@
 # limitations under the License.
 #
 LOCAL_PATH := $(call my-dir)
-LIBSODIUM_PATH=/home/audrius/dev/nacl/libsodium
+LIBSODIUM_PATH=/home/audrius/dev/rooms/nacl/libsodium
 
 
 include $(CLEAR_VARS)

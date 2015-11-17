@@ -28,9 +28,6 @@ import static org.abstractj.kalium.fixture.TestVectors.SHA256_MESSAGE;
 import static org.abstractj.kalium.fixture.TestVectors.SHA512_DIGEST;
 import static org.abstractj.kalium.fixture.TestVectors.SHA512_DIGEST_EMPTY_STRING;
 import static org.abstractj.kalium.fixture.TestVectors.SHA512_MESSAGE;
-import static org.abstractj.kalium.fixture.TestVectors.Blake2_DIGEST;
-import static org.abstractj.kalium.fixture.TestVectors.Blake2_DIGEST_EMPTY_STRING;
-import static org.abstractj.kalium.fixture.TestVectors.Blake2_MESSAGE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
@@ -101,6 +98,17 @@ public class HashTest {
     public void testSha512NullByte() {
         try {
             hash.sha512("\0".getBytes());
+        } catch (Exception e) {
+            fail("Should not raise any exception on null byte");
+        }
+    }
+
+    @Test
+    public void testPbkdf2Sha256() {
+        try {
+            byte[] salt = new Random().randomBytes();
+            String key = hash.pbkdf2_sha256(SHA256_MESSAGE, HEX, salt, 100);
+            System.err.println(key);
         } catch (Exception e) {
             fail("Should not raise any exception on null byte");
         }
