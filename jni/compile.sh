@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 set -e
 
 if [ -z "$JAVA_HOME" ]; then
@@ -6,8 +7,8 @@ if [ -z "$JAVA_HOME" ]; then
     exit 1
 fi
 
-
-C_INCLUDE_PATH="${JAVA_HOME}/include:${JAVA_HOME}/include/linux:/System/Library/Frameworks/JavaVM.framework/Headers"
+LIBSODIUM_PATH="/home/audrius/dev/rooms/nacl/libsodium/src/libsodium/.libs"
+C_INCLUDE_PATH="${JAVA_HOME}/include:${JAVA_HOME}/include/linux"
 export C_INCLUDE_PATH
 
 rm -f *.java
@@ -16,7 +17,6 @@ rm -f *.so
 
 #swig -java sodium.i
 swig -java -package org.abstractj.kalium -outdir ../src/main/java/org/abstractj/kalium sodium.i
-
 
 jnilib=libkalium-jni.so
 destlib=/usr/lib
@@ -31,7 +31,7 @@ echo $jnilib
 echo $destlib
 echo $destlib/$jnilib 
 
-sudo cp /usr/local/lib/libsodium.* /usr/lib
+#sudo cp /usr/local/lib/libsodium.* /usr/lib
 
 #In order to compile for arm/armv7/x86/mips you should build your own standalone android-toolchain as in libsodium:android-build.sh
 #https://github.com/jedisct1/libsodium/blob/master/dist-build/android-build.sh
@@ -44,7 +44,7 @@ sudo cp /usr/local/lib/libsodium.* /usr/lib
 #/installs/libsodium/android-toolchain-mips/mipsel-linux-android/bin/gcc -I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux -I/installs/libsodium/libsodium-android-mips/include sodium_wrap.c -shared -fPIC -L/installs/libsodium/libsodium-android-mips/lib -lsodium -o $jnilib
 #Example(x86):
 #/installs/libsodium/android-toolchain-x86/i686-linux-android/bin/gcc -I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux -I/installs/libsodium/libsodium-android-x86/include sodium_wrap.c -shared -fPIC -L/installs/libsodium/libsodium-android-x86/lib -lsodium -o $jnilib
-gcc -I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux sodium_wrap.c -shared -fPIC -L/usr/lib -lsodium -o $jnilib
-sudo rm -f $destlib/$jnilib  
-sudo cp $jnilib $destlib
+gcc -I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux sodium_wrap.c -shared -fPIC -L/usr/lib -lm ${LIBSODIUM_PATH}/libsodium.a -o $jnilib
+#sudo rm -f $destlib/$jnilib
+#sudo cp $jnilib $destlib
 
