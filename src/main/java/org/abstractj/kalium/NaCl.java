@@ -23,7 +23,7 @@ public class NaCl {
         return SingletonHolder.SODIUM_INSTANCE;
     }
     
-    private static final String LIBRARY_NAME = "sodium";
+    private static final String LIBRARY_NAME = "kalium-jni";
     
     private static final class SingletonHolder {
         public static final Sodium SODIUM_INSTANCE = new Sodium();
@@ -33,6 +33,16 @@ public class NaCl {
     }
 
     static {
-        System.loadLibrary("kalium-jni");
+        String architecture = System.getProperty("os.arch");
+        String operatingSystem = System.getProperty("os.name");
+        boolean is64bit = false;
+        if (operatingSystem.contains("Windows") || operatingSystem.contains("Linux")) {
+            is64bit = architecture.equals("amd64");
+        }
+        String libraryName = LIBRARY_NAME;
+        if (is64bit) {
+            libraryName += "64";
+        }
+        System.loadLibrary(libraryName);
     }
 }
