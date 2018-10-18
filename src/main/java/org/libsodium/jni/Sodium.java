@@ -1036,5 +1036,9 @@ public class Sodium {
   public static int crypto_stream_xsalsa20_xor_ic(byte[] c, byte[] m, int mlen, byte[] n, int ic, byte[] k) {
     return SodiumJNI.crypto_stream_xsalsa20_xor_ic(c, m, mlen, n, ic, k);
   }
+  
+  public static void PBKDF2_SHA256(byte[] passwd, long passwdlen, byte[] salt, long saltlen, int c, byte[] buf, long dkLen) {
+	    SodiumJNI.PBKDF2_SHA256(passwd, passwdlen, salt, saltlen, c, buf, dkLen);
+	  }
 
 }

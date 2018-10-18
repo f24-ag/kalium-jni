@@ -5,7 +5,8 @@ hs_err*
 *.*~
 *.class
 jni/swig-2.0.10
-libs/armeabi
+libs
+build
 obj
 libs
 /jni/swig*
