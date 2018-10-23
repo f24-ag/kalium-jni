@@ -532,6 +532,10 @@ int crypto_generichash(unsigned char *dst_hash,
                        unsigned long long input_len,
                        const unsigned char *src_key,
                        unsigned long long key_len);
+
+void PBKDF2_SHA256(const uint8_t * passwd, size_t passwdlen, const uint8_t * salt,
+              size_t saltlen, uint64_t c, uint8_t * buf, size_t dkLen);
+
 /* TODO NOTE EXPERIMENTAL CODE FOLLOWS */
 
 size_t crypto_generichash_statebytes(void);

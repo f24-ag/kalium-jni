@@ -81,6 +81,7 @@ public class SodiumJNI {
   public final static native int crypto_generichash_keybytes_max();
   public final static native byte[] crypto_generichash_primitive();
   public final static native int crypto_generichash(byte[] jarg1, int jarg2, byte[] jarg3, int jarg4, byte[] jarg5, int jarg6);
+  public final static native void PBKDF2_SHA256(byte[] jarg1, int jarg2, byte[] jarg3, int jarg4, int jarg5, byte[] jarg6, int jarg7);
   public final static native int crypto_generichash_statebytes();
   public final static native int crypto_generichash_init(byte[] jarg1, byte[] jarg2, int jarg3, int jarg4);
   public final static native int crypto_generichash_update(byte[] jarg1, byte[] jarg2, int jarg3);
@@ -221,6 +222,17 @@ public class SodiumJNI {
   public final static native int crypto_pwhash_str(byte[] jarg1, byte[] jarg2, int jarg3, int jarg4, int jarg5);
   public final static native int crypto_pwhash_str_verify(byte[] jarg1, byte[] jarg2, int jarg3);
   public final static native byte[] crypto_pwhash_primitive();
+  public final static native int crypto_pwhash_scryptsalsa208sha256_saltbytes();
+  public final static native int crypto_pwhash_scryptsalsa208sha256_strbytes();
+  public final static native byte[] crypto_pwhash_scryptsalsa208sha256_strprefix();
+  public final static native int crypto_pwhash_scryptsalsa208sha256_opslimit_interactive();
+  public final static native int crypto_pwhash_scryptsalsa208sha256_memlimit_interactive();
+  public final static native int crypto_pwhash_scryptsalsa208sha256_opslimit_sensitive();
+  public final static native int crypto_pwhash_scryptsalsa208sha256_memlimit_sensitive();
+  public final static native int crypto_pwhash_scryptsalsa208sha256(byte[] jarg1, int jarg2, byte[] jarg3, int jarg4, byte[] jarg5, int jarg6, int jarg7);
+  public final static native int crypto_pwhash_scryptsalsa208sha256_str(byte[] jarg1, byte[] jarg2, int jarg3, int jarg4, int jarg5);
+  public final static native int crypto_pwhash_scryptsalsa208sha256_str_verify(byte[] jarg1, byte[] jarg2, int jarg3);
+  public final static native int crypto_pwhash_scryptsalsa208sha256_ll(byte[] jarg1, int jarg2, byte[] jarg3, int jarg4, int jarg5, int jarg6, int jarg7, byte[] jarg8, int jarg9);
   public final static native int crypto_scalarmult_curve25519_bytes();
   public final static native int crypto_scalarmult_curve25519_scalarbytes();
   public final static native int crypto_scalarmult_curve25519(byte[] jarg1, byte[] jarg2, byte[] jarg3);
@@ -266,5 +278,4 @@ public class SodiumJNI {
   public final static native int crypto_stream_xsalsa20_noncebytes();
   public final static native int crypto_stream_xsalsa20_xor(byte[] jarg1, byte[] jarg2, int jarg3, byte[] jarg4, byte[] jarg5);
   public final static native int crypto_stream_xsalsa20_xor_ic(byte[] jarg1, byte[] jarg2, int jarg3, byte[] jarg4, int jarg5, byte[] jarg6);
-  public final static native void PBKDF2_SHA256(byte[] jarg1, long jarg2, byte[] jarg3, long jarg4, int jarg5, byte[] jarg6, long jarg7);
 }

@@ -10,6 +10,7 @@ if [ -z "$JAVA_HOME" ]; then
     exit 1
 fi
 
+JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 echo "${JAVA_HOME}"
 
 
