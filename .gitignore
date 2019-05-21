@@ -8,3 +8,6 @@ jni/swig-2.0.10
 libs
 obj
 build
+/.classpath
+/.settings/
+/.project
